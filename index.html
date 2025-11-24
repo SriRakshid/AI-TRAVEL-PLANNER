@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Travel Planner</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-mark">AI</div>
+        <div class="brand-text">
+          <h1>Travel Planner</h1>
+          <p>Smart itineraries in seconds.</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <section class="planner-card">
+        <h2>Plan your next trip</h2>
+        <p class="subtitle">Enter a city, budget, and days. I’ll generate a smart itinerary, cost estimate and map links.</p>
+
+        <div class="templates-row" id="templates-row">
+          <button type="button" class="template-pill" data-city="Paris" data-days="4" data-budget="1200" data-style="balanced">
+            Paris · 4 days · $1,200
+          </button>
+          <button type="button" class="template-pill" data-city="Tokyo" data-days="7" data-budget="2600" data-style="premium">
+            Tokyo · 7 days · $2,600
+          </button>
+          <button type="button" class="template-pill" data-city="Bangkok" data-days="5" data-budget="900" data-style="budget">
+            Bangkok · 5 days · $900
+          </button>
+        </div>
+
+        <form id="planner-form" class="planner-form">
+          <div class="field-grid">
+            <div class="field">
+              <label for="city">City</label>
+              <input id="city" name="city" type="text" placeholder="e.g. Paris" required />
+            </div>
+
+            <div class="field">
+              <label for="days">Days</label>
+              <input id="days" name="days" type="number" min="1" max="21" value="5" required />
+            </div>
+
+            <div class="field">
+              <label for="start-date">Start date</label>
+              <input id="start-date" name="start-date" type="date" />
+            </div>
+
+            <div class="field">
+              <label for="budget">Budget (in USD)</label>
+              <input id="budget" name="budget" type="number" min="100" step="50" placeholder="e.g. 1500" required />
+            </div>
+
+            <div class="field">
+              <label for="style">Travel style</label>
+              <select id="style" name="style">
+                <option value="balanced" selected>Balanced</option>
+                <option value="budget">Budget-friendly</option>
+                <option value="premium">Premium</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="primary-btn">Generate itinerary</button>
+
+          <p class="hint">No real bookings are made. Use this as inspiration and refine it to your taste.</p>
+        </form>
+      </section>
+
+      <section class="results-card" id="results-card">
+        <div class="results-empty" id="results-empty">
+          <h3>Your itinerary will appear here</h3>
+          <p>Perfect for planning fast or grabbing a clean screenshot for your LinkedIn post.</p>
+        </div>
+
+        <div class="results" id="results" hidden>
+          <div class="results-header">
+            <div>
+              <h2 id="summary-title">Trip summary</h2>
+              <p id="summary-subtitle"></p>
+            </div>
+            <div class="chips" id="summary-chips"></div>
+          </div>
+
+          <div class="city-hero" id="city-hero" hidden>
+            <img id="city-image" src="" alt="" />
+            <div class="city-hero-overlay">
+              <span id="city-image-label"></span>
+            </div>
+          </div>
+
+          <div class="results-grid">
+            <section class="panel" id="cost-panel">
+              <h3>Cost estimate</h3>
+              <dl class="cost-breakdown" id="cost-breakdown"></dl>
+            </section>
+
+            <section class="panel" id="itinerary-panel">
+              <h3>Daily itinerary</h3>
+              <div class="timeline" id="itinerary-timeline"></div>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <span>Built with HTML, CSS &amp; JavaScript</span>
+      <span class="dot">•</span>
+      <span>Share a screenshot on LinkedIn and tag your AI project</span>
+    </footer>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
